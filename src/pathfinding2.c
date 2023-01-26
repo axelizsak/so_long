@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:14:25 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/25 16:27:43 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/26 11:24:19 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	found_line(t_mlx *s)
 	int	y;
 
 	x = s->x_ligne;
-	y = s->y_ligne;
+	y = s->y_colonne;
 	while (s->map[x][y] != '\0')
 	{
 		if (s->map[x][y] == '#')
@@ -75,16 +75,16 @@ static int	check_path(t_mlx *s)
 
 void	pathfinding(char *fn, t_mlx *s)
 {
-	//position depart dans la matrice
+	get_P(s);
 	path(s, s->x_ligne, s->y_colonne);
 	found_line(s);
 	found_map(s);
 	if (check_path(s) == -1)
 	{
 		ft_printf("path error");
-		//liberer l espace
+		clean_map(s);
 		exit(1);
 	}
-	//recharger la map ?
+	clean_map(s);
 	load_map(fn, s);
 }

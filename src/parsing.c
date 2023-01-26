@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 09:12:49 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/25 13:10:30 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/26 11:23:04 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	get_map(char *fn, t_mlx *mlx)
 	while (str)
 	{
 		i++;
-		if (i == 1 && get_line(str) == '\0')
+		if (i == 1 && get_fl(str) == -1)
 			return (-1);
 		free(str);
 		str = get_next_line(fd);
@@ -106,7 +106,7 @@ int	check_map(t_mlx *mlx)
 		{
 			if ((mlx->map[i][j] != '0') && (mlx->map[i][j] != '1') && (mlx->map[i][j] != 'C') && (mlx->map[i][j] != 'E') && (mlx->map[i][j] != 'P'))
 				return (-1);
-			if (((i == 0 || i == mlx->ligne - '1') && (mlx->map[i][j] != '1')) || (mlx->mao[i][0] != '1'))
+			if (((i == 0 || i == mlx->ligne - '1') && (mlx->map[i][j] != '1')) || (mlx->map[i][0] != '1'))
 				return (-1);
 			j++;
 		}
@@ -119,7 +119,17 @@ int	check_map(t_mlx *mlx)
 
 void	init_map(char *fn, t_mlx *mlx)
 {
-	//get map
-	//stock_map
-	//doubles check
+	get_ber(fn);
+	get_map(fn, mlx);
+	load_map(fn, mlx);
+	if (check_map(mlx) == -1 || check_cont(mlx) == -1)
+	{
+		clean_map(mlx);
+		exit (ft_printf("error dans les checks"));
+	}
+	pathfinding(fn, mlx);
+	get_E(mlx);
+	mlx->on_item = 0;
+	mlx->mouve = 0;
+	mlx->map[mlx->e_ligne][mlx->e_colonne]  = 0;
 }
