@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:14:25 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/26 11:24:19 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/28 12:52:29 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,11 @@ static int	check_path(t_mlx *s)
 		x++;
 	}
 	return (0);
-
 }
 
 void	pathfinding(char *fn, t_mlx *s)
 {
-	get_P(s);
+	get_p(s);
 	path(s, s->x_ligne, s->y_colonne);
 	found_line(s);
 	found_map(s);

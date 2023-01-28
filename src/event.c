@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:03:41 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/26 14:53:40 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/28 17:15:06 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,13 @@ int	no_event(t_mlx *mlx)
 
 int	count_mouve(int key, t_mlx *s)
 {
-	if ((key == W && s->map[s->x_ligne - 1][s->y_colonne] != '1') || (key == S && s->map[s->x_ligne + 1][s->y_colonne] != '1') || (key == A && s->map[s->x_ligne][s->y_colonne - 1] != '1') || (key == D && s->map[s->x_ligne][s->y_colonne + 1]))
+	if (key == W && s->map[s->x_ligne - 1][s->y_colonne] != '1')
+		return (1);
+	else if (key == S && s->map[s->x_ligne + 1][s->y_colonne] != '1')
+		return (1);
+	else if (key == A && s->map[s->x_ligne][s->y_colonne - 1] != '1')
+		return (1);
+	else if (key == D && s->map[s->x_ligne][s->y_colonne + 1] != '1')
 		return (1);
 	return (0);
 }
@@ -33,15 +39,15 @@ int	keypress(int key, t_mlx *s)
 		mlx_destroy_window(s->mlx, s->win);
 	if (key == W || key == S || key == A || key == D)
 	{
-		event(key, s);
+		game_events(key, s);
 		if (count_mouve(key, s))
 		{
 			i++;
 			s->mouve = i;
-			ft_printf();//le nombre de mouves
+			ft_printf("moove : %d\n", s->mouve);
 		}
-		return (0);
 	}
+	return (0);
 }
 
 void	mlx_hook_init(t_mlx mlx)

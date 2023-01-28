@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:16:49 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/26 11:21:05 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/28 16:01:05 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	free_mlx(t_mlx *mlx, int i)
 	mlx_destroy_window(mlx->mlx, mlx->win);
 	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);
-	free_map(mlx);
+	clean_map(mlx);
 	exit(0);
 }
 
@@ -50,6 +50,6 @@ int	handle_destroy(t_mlx *mlx)
 	mlx_destroy_window(mlx->mlx, mlx->win);
 	mlx_destroy_display(mlx->mlx);
 	free(mlx->mlx);
-	free_map(mlx);
+	clean_map(mlx);
 	exit(0);
 }

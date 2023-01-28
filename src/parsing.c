@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 09:12:49 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/26 11:23:04 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/28 19:02:10 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 int	get_map(char *fn, t_mlx *mlx)
 {
-	int	fd;
-	int	i;
+	int		fd;
+	int		i;
 	char	*str;
 
 	fd = open(fn, O_RDONLY);
 	str = get_next_line(fd);
 	if (!str || fd < 0)
 		return (-1);
-	mlx->colonne = ft_strlen(str) - 1;
+	mlx->colonne = ft_strlen1(str) - 1;
 	i = 0;
 	while (str)
 	{
@@ -39,16 +39,16 @@ int	get_map(char *fn, t_mlx *mlx)
 
 void	load_map(char *fn, t_mlx *mlx)
 {
-	int	i;
-	int	j;
-	int	fd;
+	int		i;
+	int		j;
+	int		fd;
 	char	*line;
 
 	i = 0;
 	fd = open(fn, O_RDONLY);
-	mlx->map = malloc(sizeof(char*) * (mlx->ligne + 1));
+	mlx->map = malloc(sizeof(char *) * (mlx->ligne + 1));
 	if (!mlx->map)
-		return;
+		exit (-1);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -67,11 +67,11 @@ void	load_map(char *fn, t_mlx *mlx)
 int	check_cont(t_mlx *mlx)
 {
 	t_mlx	check;
+
 	check.v = 0;
 	check.c = 0;
 	check.e = 0;
 	check.p = 0;
-
 	while (mlx->map[check.v] != NULL)
 	{
 		check.m = 0;
@@ -104,9 +104,14 @@ int	check_map(t_mlx *mlx)
 		j = 0;
 		while (mlx->map[i][j] != '\0')
 		{
-			if ((mlx->map[i][j] != '0') && (mlx->map[i][j] != '1') && (mlx->map[i][j] != 'C') && (mlx->map[i][j] != 'E') && (mlx->map[i][j] != 'P'))
+			if ((mlx->map[i][j] != '0') && (mlx->map[i][j] !=
+					'1') && (mlx->map[i][j] != 'C') &&
+					(mlx->map[i][j] != 'E') &&
+					(mlx->map[i][j] != 'P'))
 				return (-1);
-			if (((i == 0 || i == mlx->ligne - '1') && (mlx->map[i][j] != '1')) || (mlx->map[i][0] != '1'))
+			if (((i == 0 || i == mlx->ligne - '1')
+					&& (mlx->map[i][j] != '1'))
+					|| (mlx->map[i][0] != '1'))
 				return (-1);
 			j++;
 		}
@@ -128,8 +133,8 @@ void	init_map(char *fn, t_mlx *mlx)
 		exit (ft_printf("error dans les checks"));
 	}
 	pathfinding(fn, mlx);
-	get_E(mlx);
+	get_e(mlx);
 	mlx->on_item = 0;
 	mlx->mouve = 0;
-	mlx->map[mlx->e_ligne][mlx->e_colonne]  = 0;
+	mlx->map[mlx->e_ligne][mlx->e_colonne] = 0;
 }

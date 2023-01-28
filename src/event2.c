@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   event2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/01/28 11:19:30 by aizsak            #+#    #+#             */
+/*   Updated: 2023/01/28 17:17:47 by aizsak           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	swap_contents(t_mlx *s, int ligne, int colonne)
@@ -14,26 +26,26 @@ void	mouve_player(int key, t_mlx *s)
 	if (key == W && s->map[s->x_ligne - 1][s->y_colonne] != '1')
 		swap_contents(s, s->x_ligne - 1, s->y_colonne);
 	if (key == S && s->map[s->x_ligne + 1][s->y_colonne] != '1')
-                swap_contents(s, s->x_ligne + 1, s->y_colonne);
+		swap_contents(s, s->x_ligne + 1, s->y_colonne);
 	if (key == A && s->map[s->x_ligne][s->y_colonne - 1] != '1')
-                swap_contents(s, s->x_ligne, s->y_colonne - 1);
+		swap_contents(s, s->x_ligne, s->y_colonne - 1);
 	if (key == D && s->map[s->x_ligne][s->y_colonne + 1] != '1')
-                swap_contents(s, s->x_ligne, s->y_colonne + 1);
+		swap_contents(s, s->x_ligne, s->y_colonne + 1);
 	if (s->on_item == s->item)
 		s->map[s->e_ligne][s->e_colonne] = 'E';
 }
 
 void	recolt_contents(int key, t_mlx *s)
 {
-	if (key == D && s->map[m->x_ligne][s->y_colonne + 1] == 'C')
+	if (key == D && s->map[s->x_ligne][s->y_colonne + 1] == 'C')
 	{
 		s->on_item++;
 		s->map[s->x_ligne][s->y_colonne + 1] = '0';
 	}
-	if (key == A && s->map[m->x_ligne][s->y_colonne - 1] == 'C')
+	if (key == A && s->map[s->x_ligne][s->y_colonne - 1] == 'C')
 	{
 		s->on_item++;
-		s->map[m->x_ligne][m->y_colonne - 1] = '0';
+		s->map[s->x_ligne][s->y_colonne - 1] = '0';
 	}
 	if (key == S && s->map[s->x_ligne + 1][s->y_colonne] == 'C')
 	{
@@ -61,9 +73,9 @@ void	exit_game(int key, t_mlx *s)
 
 void	game_events(int key, t_mlx *mlx)
 {
-	get_P(mlx);
-	recolt_cotents(key, mlx);
+	get_p(mlx);
+	recolt_contents(key, mlx);
 	exit_game(key, mlx);
 	mouve_player(key, mlx);
-	map__img(mlx);
+	map_img(mlx);
 }

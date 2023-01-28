@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   front1.c                                           :+:      :+:    :+:   */
+/*   mlx_base.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:34:52 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/26 14:25:27 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/28 20:00:06 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 void	windowsing(t_mlx *s)
 {
-	static char fi[5] = //les images
-	s->win = mlx_new_window(s, s->ligne * 50, s->colonne * 50, "kasar");
+	static char	*fi[5] = {"img/v.xpm", "img/m.xpm", "img/c.xpm", "img/e.xpm", "img/p.xpm"};
+	s->win = mlx_new_window(s->mlx, s->ligne * 50, s->colonne * 50, "kasar");
 	if (!s->win)
 	{
-		free(s);
+		free(s->win);
 		exit (-1);
 	}
 	imagination(s, fi);
 }
 
-void	imagination(t_mlx *s,char **fi)
+void	imagination(t_mlx *s, char **fi)
 {
 	int	i;
 	int	j;
@@ -32,7 +32,7 @@ void	imagination(t_mlx *s,char **fi)
 	j = 0;
 	while (j <= 4)
 	{
-		s->img[y] = mlx_xpm_file_to_image(s->mlx, fi[j], &i, &i);
+		s->img[j] = mlx_xpm_file_to_image(s->mlx, fi[j], &i, &i);
 		if (j == 0 && !s->img[j])
 		{
 			mlx_destroy_window(s->mlx, s->win);
@@ -42,12 +42,12 @@ void	imagination(t_mlx *s,char **fi)
 			exit(0);
 		}
 		else if (!s->img[j])
-			//free mlx
+			free_mlx(s, j - 1);
 		j++;
 	}
 }
 
-void	typ_img(char c, t_mlx *s)
+void	*typ_img(char c, t_mlx *s)
 {
 	if (c == '0')
 		return (s->img[0]);
@@ -59,7 +59,7 @@ void	typ_img(char c, t_mlx *s)
 		return (s->img[3]);
 	if (c == 'P')
 		return (s->img[4]);
-	reutrn (0);
+	return (0);
 }
 
 void	map_img(t_mlx *s)
@@ -73,7 +73,9 @@ void	map_img(t_mlx *s)
 		y = 0;
 		while (s->map[x][y] != '\0')
 		{
-			mlx_put_image_to_window(s->mlx, s->win, typ_img(s->map[x][y], s), (x * 50), (y * 50));
+			mlx_put_image_to_window(s->mlx, s->win,
+				typ_img(s->map[x][y], s),
+				(x * 50), (y * 50));
 			y++;
 		}
 		x++;
