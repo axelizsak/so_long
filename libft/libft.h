@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:49:18 by aizsak            #+#    #+#             */
-/*   Updated: 2022/12/11 12:28:05 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/28 19:08:10 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <unistd.h>
 # include <stddef.h>
 # include <stdarg.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 typedef struct s_list
 {
@@ -81,7 +84,7 @@ unsigned long	ft_phexa(unsigned long n, const char type);
 unsigned long	ft_pptr(unsigned long n);
 
 char			*get_next_line(int fd);
-char			*ft_strjoin_gnl(char *reader, char *buff);
+char			*ft_strjoin_gnl(char *rdr, char *buff);
 char			*get_line(char *buff);
 char			*trimmed_buff(char *buff);
 char			*get_file(char *buff, int fd);

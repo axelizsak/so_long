@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:26:49 by aizsak            #+#    #+#             */
-/*   Updated: 2022/12/11 12:28:29 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/28 19:07:30 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_strlen2(char *str)
 	return (i);
 }
 
-char	*ft_strjoin_gnl(char *reader, char *buff)
+char	*ft_strjoin_gnl(char *rdr, char *buff)
 {
 	char	*str;
 	int		i;
@@ -46,9 +46,9 @@ char	*ft_strjoin_gnl(char *reader, char *buff)
 
 	i = 0;
 	j = -1;
-	if (!reader && !buff)
+	if (!rdr && !buff)
 		return (NULL);
-	str = malloc(sizeof(char) * (ft_strlen(reader) + ft_strlen(buff)) + 1);
+	str = malloc(sizeof(char) * (ft_strlen1(rdr) + ft_strlen1(buff)) + 1);
 	if (!str)
 		return (NULL);
 	if (buff)
@@ -59,8 +59,8 @@ char	*ft_strjoin_gnl(char *reader, char *buff)
 			i++;
 		}
 	}
-	while (reader[++j] != '\0')
-		str[i + j] = reader[j];
+	while (rdr[++j] != '\0')
+		str[i + j] = rdr[j];
 	if (buff)
 		free(buff);
 	str[i + j] = '\0';
