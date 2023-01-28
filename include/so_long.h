@@ -19,6 +19,12 @@
 # include <math.h>
 # include <mlx.h>
 
+# define W 119
+# define S 115
+# define A 97
+# define D 100
+# define ESC 65307
+
 typedef struct	s_mlx
 {
 	int	ligne;
@@ -38,7 +44,7 @@ typedef struct	s_mlx
 	int	p;
 	int	item;
 	int	on_item;
-	int	img;
+	int	img[5];
 
 }t_mlx
 

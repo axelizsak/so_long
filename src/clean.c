@@ -24,3 +24,32 @@ void	clean_map(t_mlx *mlx)
 	}
 	free (mlx->map);
 }
+
+void	destroy_all_images(t_mlx *mlx, int i)
+{
+	while (i >= 0)
+	{
+		mlx_destroy_image(mlx->mlx, mlx->img[i]);
+		i--;
+	}
+}
+
+void	free_mlx(t_mlx *mlx, int i)
+{
+	destroy_all_images(mlx, i);
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	mlx_destroy_display(mlx->mlx);
+	free(mlx->mlx);
+	free_map(mlx);
+	exit(0);
+}
+
+int	handle_destroy(t_mlx *mlx)
+{
+	destroy_all_images(mlx, 4);
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	mlx_destroy_display(mlx->mlx);
+	free(mlx->mlx);
+	free_map(mlx);
+	exit(0);
+}
