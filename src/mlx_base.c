@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:34:52 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/29 14:19:42 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/29 14:58:56 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	windowsing(t_mlx *s)
 {
-	static char	*fi[5] = {"img/v.xpm", "img/m.xpm", "img/c.xpm", "img/e.xpm", "img/p.xpm"};
+	static char	*fi[5] = {"img/v.xpm", "img/m.xpm", "img/c.xpm",
+		"img/e.xpm", "img/p.xpm"};
+
 	s->win = mlx_new_window(s->mlx, s->colonne * 50, s->ligne * 50, "Oz");
 	if (!s->win)
 	{
