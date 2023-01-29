@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:49:18 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/28 19:08:10 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/29 16:42:56 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 # include <unistd.h>
 # include <stddef.h>
 # include <stdarg.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
