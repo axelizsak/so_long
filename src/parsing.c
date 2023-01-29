@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 09:12:49 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/28 19:02:10 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/29 14:22:12 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	load_map(char *fn, t_mlx *mlx)
 	fd = open(fn, O_RDONLY);
 	mlx->map = malloc(sizeof(char *) * (mlx->ligne + 1));
 	if (!mlx->map)
-		exit (-1);
+		return ;
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -136,5 +136,5 @@ void	init_map(char *fn, t_mlx *mlx)
 	get_e(mlx);
 	mlx->on_item = 0;
 	mlx->mouve = 0;
-	mlx->map[mlx->e_ligne][mlx->e_colonne] = 0;
+	mlx->map[mlx->e_ligne][mlx->e_colonne] = '0';
 }

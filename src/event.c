@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 13:03:41 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/28 17:15:06 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/29 13:38:13 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	keypress(int key, t_mlx *s)
 		{
 			i++;
 			s->mouve = i;
-			ft_printf("moove : %d\n", s->mouve);
+			ft_printf("Mouves : %d\n", i);
 		}
 	}
 	return (0);

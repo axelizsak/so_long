@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 11:19:30 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/28 17:17:47 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/01/29 14:20:21 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	exit_game(int key, t_mlx *s)
 void	game_events(int key, t_mlx *mlx)
 {
 	get_p(mlx);
-	recolt_contents(key, mlx);
 	exit_game(key, mlx);
+	recolt_contents(key, mlx);
 	mouve_player(key, mlx);
 	map_img(mlx);
 }
