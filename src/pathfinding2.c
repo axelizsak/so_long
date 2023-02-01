@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 14:14:25 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/28 12:52:29 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/02/01 14:31:06 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	pathfinding(char *fn, t_mlx *s)
 	found_map(s);
 	if (check_path(s) == -1)
 	{
-		ft_printf("path error");
+		ft_printf("path error, impossible de jouer");
 		clean_map(s);
 		exit(1);
 	}

@@ -6,7 +6,7 @@
 /*   By: aizsak <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 09:12:49 by aizsak            #+#    #+#             */
-/*   Updated: 2023/01/29 14:22:12 by aizsak           ###   ########.fr       */
+/*   Updated: 2023/02/01 14:29:10 by aizsak           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	init_map(char *fn, t_mlx *mlx)
 	if (check_map(mlx) == -1 || check_cont(mlx) == -1)
 	{
 		clean_map(mlx);
-		exit (ft_printf("error dans les checks"));
+		exit (ft_printf("error dans les checks, .ber? map vide?"));
 	}
 	pathfinding(fn, mlx);
 	get_e(mlx);
